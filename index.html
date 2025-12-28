@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>SOOP Mission Board</title>
+  <link rel="stylesheet" href="mission.css" />
+</head>
+<button id="btn-open-admin">관리자</button>
+<!-- 관리자 모달 -->
+<div id="admin-overlay" style="display:none">
+  <div id="admin-modal">
+    <h2>관리자 설정</h2>
+
+    <!-- BJ 연동 설정 -->
+    <div id="admin-bj-section">
+      <h3>BJ 연동 설정</h3>
+      <div id="bj-config-list"></div>
+      <button id="btn-add-bj">+ BJ 추가</button>
+    </div>
+
+    <div style="margin-top:20px">
+      <button id="btn-admin-close">닫기</button>
+    </div>
+  </div>
+</div>
+
+<body>
+
+<!-- ===== 상단 버튼 바 ===== -->
+<div id="top-bar">
+  <button id="btn-calendar">달력 모드</button>
+  <button id="btn-bingo">빙고 모드</button>
+  <button id="btn-settings">설정</button>
+  <button id="btn-reset-all">전체 초기화</button>
+  <div id="header"></div>
+</div>
+
+<!-- ===== 빙고 네비 ===== -->
+<div id="bingo-nav">
+  <button id="btn-prev-bingo">이전</button>
+  <span id="bingo-index"></span>
+  <button id="btn-next-bingo">다음</button>
+  <button id="btn-reset-bingo">현재 초기화</button>
+</div>
+
+<!-- ===== 보드 영역 ===== -->
+<div id="board">
+  <div id="calendar-board"></div>
+  <div id="bingo-board"></div>
+</div>
+
+<!-- ===== 설정 모달 ===== -->
+<div id="settings-overlay">
+  <div id="settings-modal">
+
+    <!-- 달력 설정 -->
+    <div id="calendar-settings">
+      <h3>달력 설정</h3>
+      <p style="color:#999;font-size:13px;">(추후 추가)</p>
+    </div>
+
+    <!-- 빙고 설정 -->
+    <div id="bingo-settings">
+      <h3>빙고 설정</h3>
+
+      <h4>빙고 크기</h4>
+      <div class="style-row">
+        <label>빙고</label>
+        <input type="number" id="bingo-cols" min="2" max="7">
+        <input type="number" id="bingo-rows" min="2" max="7">
+      </div>
+
+      <h4>배경 이미지</h4>
+      <div class="setting-row">
+        <label>배경 이미지 URL</label>
+        <input type="text" id="bingo-bg-url" placeholder="https://...">
+      </div>
+
+      <h4>빙고 숫자</h4>
+      <div id="bingo-preview-wrapper">
+        <div id="bingo-preview-grid"></div>
+      </div>
+
+      <div class="style-row">
+        <label>숫자</label>
+        <input type="color" id="bingo-number-color">
+        <input type="number" id="bingo-number-size">
+      </div>
+
+      <div class="style-row">
+        <label>미션</label>
+        <input type="color" id="bingo-mission-color">
+        <input type="number" id="bingo-mission-size">
+      </div>
+
+      <div class="style-row">
+        <label>스탬프</label>
+        <input type="number" id="bingo-stamp-size">
+        <span>px</span>
+      </div>
+
+
+      <!-- ===== 저장 / 닫기 ===== -->
+      <div class="settings-actions">
+        <button id="settings-save">저장</button>
+        <button id="settings-close">닫기</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== 관리자 로그인 모달 (완전히 분리) ===== -->
+<div id="admin-overlay" style="display:none">
+  <div id="admin-modal">
+    <div class="admin-modal-title">관리자 인증</div>
+
+    <input
+      type="password"
+      id="admin-password"
+      placeholder="관리자 비밀번호"
+    >
+
+    <div class="admin-modal-actions">
+      <button id="btn-admin-login">로그인</button>
+      <button id="btn-admin-close" type="button">닫기</button>
+    </div>
+
+    <div id="admin-msg" class="admin-msg"></div>
+  </div>
+</div>
+
+<script src="state.js"></script>
+<script src="mission.js"></script>
+<script src="render.js"></script>
+
+</body>
+</html>
